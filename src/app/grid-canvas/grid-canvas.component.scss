@@ -1,0 +1,17 @@
+.form-grid {
+  display: block;
+}
+.drop-area {
+  display: grid;
+  grid-auto-rows: min-content;
+  grid-gap: 12px;
+}
+.grid-item {
+  cursor: move;
+}
+.card-content {
+  padding: 8px;
+}
+.field-preview {
+  margin-top: 6px;
+}

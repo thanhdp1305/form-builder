@@ -1,0 +1,62 @@
+<div class="builder-root">
+  <div class="left">
+    <div class="toolbar">
+      <button
+        nz-button
+        (click)="addField('text')"
+      >
+        Add Text
+      </button>
+      <button
+        nz-button
+        (click)="addField('select')"
+      >
+        Add Select
+      </button>
+      <button
+        nz-button
+        (click)="addField('date')"
+      >
+        Add Date
+      </button>
+      <button
+        nz-button
+        (click)="save()"
+      >
+        Save Template
+      </button>
+    </div>
+    <div class="fields-list">
+      <div
+        *ngFor="let f of template.fields"
+        (click)="selectField(f)"
+        class="field-row"
+      >
+        {{ f.label }} ({{ f.type }})
+      </div>
+    </div>
+  </div>
+
+  <div class="center">
+    <app-grid-canvas
+      [layout]="template.layout"
+      [fields]="template.fields"
+      (fieldSelected)="selectField($event)"
+    ></app-grid-canvas>
+  </div>
+
+  <div
+    class="right"
+    *ngIf="selectedField"
+  >
+    <app-field-config-panel
+      [field]="selectedField"
+      (update)="updateField($event)"
+    ></app-field-config-panel>
+  </div>
+
+  <div class="preview">
+    <h3>Preview</h3>
+    <app-form-renderer [template]="template"></app-form-renderer>
+  </div>
+</div>

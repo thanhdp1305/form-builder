@@ -1,0 +1,40 @@
+<div
+  class="form-grid"
+  [style.gridTemplateColumns]="'repeat(' + layout.columns + ', 1fr)'"
+  [style.gap.px]="layout.gutter"
+>
+  <div
+    cdkDropList
+    (cdkDropListDropped)="drop($event)"
+    class="drop-area"
+    nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24 }"
+  >
+    <div
+      *ngFor="let field of fields; let i = index"
+      cdkDrag
+      nz-col
+      nzSpan="{{ field.grid?.colSpan }}"
+      (click)="selectField(field)"
+    >
+        <nz-form-item>
+          <nz-form-label>{{ field.label }}</nz-form-label>
+          <nz-form-control>
+            <input
+              *ngIf="field.type === 'text'"
+              nz-input
+              disabled
+              placeholder="Text"
+            />
+            <nz-select
+              *ngIf="field.type === 'select'"
+              nzDisabled
+            ></nz-select>
+            <nz-date-picker
+              *ngIf="field.type === 'date'"
+              nzDisabled
+            ></nz-date-picker>
+          </nz-form-control>
+        </nz-form-item>
+    </div>
+  </div>
+</div>

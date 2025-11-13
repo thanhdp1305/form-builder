@@ -1,0 +1,47 @@
+<form [formGroup]="form">
+  <label>Label</label>
+  <input
+    nz-input
+    formControlName="label"
+  />
+
+  <label>Type</label>
+  <nz-select formControlName="type">
+    <nz-option
+      nzValue="text"
+      nzLabel="Text"
+    ></nz-option>
+    <nz-option
+      nzValue="select"
+      nzLabel="Select"
+    ></nz-option>
+    <nz-option
+      nzValue="date"
+      nzLabel="Date"
+    ></nz-option>
+  </nz-select>
+
+  <label>Col Span</label>
+  <input
+    type="number"
+    nz-input
+    formControlName="colSpan"
+    min="1"
+  />
+
+  <label>Placeholder</label>
+  <input
+    nz-input
+    formControlName="placeholder"
+  />
+
+  <div style="margin-top: 8px">
+    <button
+      nz-button
+      nzType="primary"
+      (click)="apply(); $event.preventDefault()"
+    >
+      Apply
+    </button>
+  </div>
+</form>

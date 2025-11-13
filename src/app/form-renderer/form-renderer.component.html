@@ -1,0 +1,55 @@
+<div class="renderer">
+  <form
+    nz-form
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+  >
+    <div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24 }">
+      <div
+        nz-col
+        nzSpan="{{ f.grid?.colSpan }}"
+        *ngFor="let f of template.fields"
+      >
+        <nz-form-item style="margin-bottom: 8px">
+          <nz-form-label>{{ f.label }}</nz-form-label>
+          <nz-form-control>
+            <input
+              *ngIf="f.type === 'text'"
+              nz-input
+              [formControlName]="f.id"
+              [placeholder]="f.placeholder"
+            />
+            <input
+              *ngIf="f.type === 'number'"
+              type="number"
+              nz-input
+              [formControlName]="f.id"
+            />
+            <nz-select
+              *ngIf="f.type === 'select'"
+              [formControlName]="f.id"
+            >
+              <nz-option
+                *ngFor="let o of f.options"
+                [nzValue]="o.value"
+                [nzLabel]="o.label"
+              ></nz-option>
+            </nz-select>
+            <nz-date-picker
+              *ngIf="f.type === 'date'"
+              [formControlName]="f.id"
+              style="width: 100%;"
+            ></nz-date-picker>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+
+    <button
+      nz-button
+      nzType="primary"
+    >
+      Submit
+    </button>
+  </form>
+</div>

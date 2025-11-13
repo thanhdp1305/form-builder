@@ -1,0 +1,11 @@
+:host {
+  display: block;
+}
+label {
+  display: block;
+  margin-top: 8px;
+}
+input[nz-input],
+nz-select {
+  width: 100%;
+}
