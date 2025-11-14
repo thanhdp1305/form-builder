@@ -6,7 +6,6 @@
   <div
     cdkDropList
     (cdkDropListDropped)="drop($event)"
-    class="drop-area"
     nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24 }"
   >
     <div
@@ -32,6 +31,7 @@
             <nz-date-picker
               *ngIf="field.type === 'date'"
               nzDisabled
+              style="width: 100%;"
             ></nz-date-picker>
           </nz-form-control>
         </nz-form-item>
